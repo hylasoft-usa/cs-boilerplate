@@ -14,29 +14,51 @@ This boilerplate enforces coding standards for Hylasoft projects written in C# a
 
 The following software must be installed on your machine:
 
- - Visual Studio 2012 or Visual Studio 2013
- - [nodeJS](nodejs.org)
+- Visual Studio 2012 or Visual Studio 2013
+- [nodeJS](nodejs.org)
 
 This project uses [Grunt](http://gruntjs.com/) to run the tasks If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. To install the Grunt command line interface, open a command line and type:
 
-  npm install -g grunt-cli
+    npm install -g grunt-cli
 
 ## Create a new project
 
+### First time (creating a solution)
+
+- Create a new solution with Visual Studio (make sure to check "create directory for solution")
+- Copy the following files from this repository in your newly created solution folder:
+  - `package.json`
+  - `rules.rulest`
+  - `gruntfile.js`
+  - `Settings.StyleCop`
+- Change the variable `projectName` in the Gruntfile with the solution name (without the `.sln` extension)
+- Enable Nuget package restore by right-clicking on the solution file in visual studio and selecting *Enable Nuget package restore*
+- Add `BuildTools.StyleCopPlus` to the Nuget references for all the existing projects
+
+### Creating a new project
+
+After creating a new project, remember to add `BuildTools.StyleCopPlus` to the Nuget references for all the projects. Sometimes a file `deleteme.txt` is added to the project when stylecop is installed. If that's the case, you can remove it.
+
 ## Running the tasks
 
-#### Editing the Gruntfile
+before running the tests, make sure to install the node dependencies:
+
+    npm install
 
 ### Test
 
+    grunt test
+
 ### Release
+
+    grunt release
 
 ## Pimp your VS
 
 If you wish to use stylecop inside your Visual Studio:
 
 - Install [stylecop](http://stylecop.codeplex.com/releases/view/79972)
-- To install **Stylecop Plus**, copy `packages\styelcopPlus.[Version_Number]\tools\styelcopPlus.dll` in the nuget package folder of your project in your stylecop installation folder.
+- To install **Stylecop Plus**, copy `packages\BuildTools.StylelCopPlus.[Version_Number]\tools\StyelCopPlus.dll` in the Nuget package folder of your solution to your stylecop installation folder.
 
 ## Contribute to the git repository
 
