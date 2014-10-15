@@ -20,7 +20,7 @@
       </Rules>
       <AnalyzerSettings>
         <StringProperty Name="SP2001_Mode">Spaces:False</StringProperty>
-        <StringProperty Name="SP2100_Limit">120:2</StringProperty>
+        <StringProperty Name="SP2100_Limit">250:2</StringProperty>
         <StringProperty Name="SP2103_Limit">1500</StringProperty>
         <StringProperty Name="AdvancedNaming_ProtectedInstanceField">_$(aaBb)</StringProperty>
         <StringProperty Name="AdvancedNaming_PrivateInstanceField">_$(aaBb)</StringProperty>
