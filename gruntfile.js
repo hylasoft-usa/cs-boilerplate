@@ -42,7 +42,10 @@ module.exports = function(grunt) {
         options: {
           projectConfiguration: 'Release',
           platform: '<%= platform %>',
-          targets: ['Clean', 'Rebuild']
+          targets: ['Clean', 'Rebuild'],
+          buildParameters: {
+            StyleCopEnabled: false
+          }
         }
       },
       debug: {
@@ -65,7 +68,7 @@ module.exports = function(grunt) {
 
     mstest: {
       debug: {
-        src: ['<%= srcPath %>/**/bin/Debug/*.dll','<%= srcPath %>/**/bin/Debug/*.exe'] // Points to test dll
+        src: ['<%= srcPath %>/**/bin/Debug/*.dll', '<%= srcPath %>/**/bin/Debug/*.exe'] // Points to test dll
       }
     }
 
