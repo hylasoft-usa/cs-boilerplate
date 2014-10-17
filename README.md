@@ -19,7 +19,7 @@ The following software must be installed on your machine:
 
 This project uses [Grunt](http://gruntjs.com/) to run the tasks If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. To install the Grunt command line interface, open a command line and type:
 
-    npm install -g grunt-cli
+    $ npm install -g grunt-cli
 
 ## Create a new project
 
@@ -43,15 +43,19 @@ After creating a new project, remember to add `BuildTools.StyleCopPlus` to the N
 
 before running the tests, make sure to install the node dependencies:
 
-    npm install
+    $ npm install
 
 ### Test
 
-    grunt test
+    $ grunt test
+
+This task builds the solution in debug mode, runs the Code Analysis, runs the Stylecop Analysis and runs the test. You should pass this task without errors to get your pull request approved.
 
 ### Release
 
-    grunt release
+    $ grunt release
+
+This tasks updates your AssemblyInfo files with the version number specified in the `package.json`, and then runs `grunt test`. This task must be ran before committing a new release.
 
 ## Pimp your VS
 
@@ -61,6 +65,35 @@ If you wish to use stylecop inside your Visual Studio:
 - To install **Stylecop Plus**, copy `packages\BuildTools.StylelCopPlus.[Version_Number]\tools\StyelCopPlus.dll` in the Nuget package folder of your solution to your stylecop installation folder.
 
 ## Contribute to the git repository
+
+Before contributing to the repository be sure to document yourself about git in general, and about [github workflow](https://guides.github.com/introduction/flow/index.html) in particular.
+
+### Committing and branching with style
+
+In extreme synthesis here's how github flow works. Any time you start working on a new task (could be an issue, a bugfix...) pull the recent version of master and branch out by doing:
+````
+$ git checkout -b <branchname>
+````
+the `<branchaname>` must briefly describe what you are accomplishing in this branch. Examples of good branch names are: `fix-login-form-bug`,`add-back-button`,`improve-db-connector-performance`,`prepare-release-0.1`...
+
+In your branch, try to make your commits reasonably atomic, and perform a quick `git-diff` to check that you are committing only what you want to commit. Think of a commit as a small step that contribute to complete your branch task. Give the commit a sound name that explains what you did and use present tense. Examples of good commit names are: `all the tests pass now`, `refactor and prepare to merge to master`, `add class UserController`, `add unit tests`.
+
+Use unit testing as much as possible. If you are adding a functionality, you should try to describe the functionality in terms of the tests you write.
+
+When you think you are ready to commit back to master, it's time to test your branch.
+
+If the master has been updated, make sure to update your branch as well:
+````
+$ git checkout master
+$ git pull
+$ git checkout <branchname>
+$ git merge master
+````
+After that you can open a pull request on github. Make sure your code adheres to the standards and passes all the tests:
+````
+$ grunt test
+````
+Your code will be discussed and changes may be requested. Remember, the smaller the changes on the codebase, the faster and easier will be the review.
 
 ## TODOs
 
