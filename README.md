@@ -32,7 +32,6 @@ This project uses [Grunt](http://gruntjs.com/) to run the tasks If you haven't u
   - `gruntfile.js`
   - `Settings.StyleCop`
 - Change the variable `projectName` in the Gruntfile with the solution name (without the `.sln` extension)
-- Enable Nuget package restore by right-clicking on the solution file in visual studio and selecting *Enable Nuget package restore*
 - Add `BuildTools.StyleCopPlus` to the Nuget references for all the existing projects
 
 ### Creating a new project

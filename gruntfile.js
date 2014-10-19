@@ -70,12 +70,21 @@ module.exports = function(grunt) {
       debug: {
         src: ['<%= srcPath %>/**/bin/Debug/*.dll', '<%= srcPath %>/**/bin/Debug/*.exe'] // Points to test dll
       }
+    },
+
+    nugetrestore: {
+      restore: {
+        src: '<%= srcPath %><%= solutionName %>',
+        dest: 'packages/'
+      }
     }
 
   });
 
+
+
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['msbuild:release']);
-  grunt.registerTask('test', ['msbuild:debug', 'mstest']);
+  grunt.registerTask('build', ['nugetrestore','msbuild:release']);
+  grunt.registerTask('test', ['nugetrestore','msbuild:debug', 'mstest']);
   grunt.registerTask('release', ['test', 'assemblyinfo']);
 };

@@ -7,7 +7,8 @@
     "grunt-msbuild": "^0.2.2",
     "grunt-mstest": "^0.1.5",
     "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "grunt-nuget": "~0.1.4"
   },
   "engines": {
     "node": ">=0.8.0"
