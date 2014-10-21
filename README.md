@@ -63,8 +63,6 @@ If you wish to use stylecop inside your Visual Studio:
 - Install [stylecop](http://stylecop.codeplex.com/releases/view/79972)
 - To install **Stylecop Plus**, copy `packages\BuildTools.StylelCopPlus.[Version_Number]\tools\StyelCopPlus.dll` in the Nuget package folder of your solution to your stylecop installation folder.
 
-We suggest that you install this [VS extension](https://visualstudiogallery.msdn.microsoft.com/de9d25ac-8715-4169-9aa8-58a96db1f125?SRC=VSIDE) that you can run to format your code based on the common format style.
-
 ## Contribute to the git repository
 
 Before contributing to the repository be sure to document yourself about git in general, and about [github workflow](https://guides.github.com/introduction/flow/index.html) in particular.
