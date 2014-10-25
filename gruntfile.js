@@ -57,9 +57,9 @@ module.exports = function(grunt) {
           buildParameters: {
             StyleCopEnabled: true,
             StyleCopTreatErrorsAsWarnings: false,
-            StyleCopOverrideSettingsFile: '../<%= styleCopRules %>',
+            StyleCopOverrideSettingsFile: process.cwd() + '/<%= styleCopRules %>',
             RunCodeAnalysis: true,
-            CodeAnalysisRuleSet: '../<%= ruleSet %>',
+            CodeAnalysisRuleSet: process.cwd() + '/<%= ruleSet %>',
             TreatWarningsAsErrors: true
           },
         }
@@ -86,5 +86,5 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['nugetrestore','msbuild:release']);
   grunt.registerTask('test', ['nugetrestore','msbuild:debug', 'mstest']);
-  grunt.registerTask('release', ['test', 'assemblyinfo']);
+  grunt.registerTask('release', ['assemblyinfo', 'test']);
 };
