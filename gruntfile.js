@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 
     // Set this variables for different projects
     projectName: 'your_solution_name_here',
+    testProjectPath: 'path_to_your_test_project',
 
     // These variables shouldn't be changed, but sometimes it might be necessary
     srcPath: './',
@@ -68,7 +69,7 @@ module.exports = function(grunt) {
 
     mstest: {
       debug: {
-        src: ['<%= srcPath %>/**/bin/Debug/*.dll', '<%= srcPath %>/**/bin/Debug/*.exe'] // Points to test dll
+        src: ['<%= srcPath %>/<%= testProjectPath %>/bin/Debug/*.dll'] // Points to test dll
       }
     },
 
