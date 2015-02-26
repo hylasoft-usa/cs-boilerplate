@@ -11,7 +11,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Set this variables for different projects
-    projectName: 'your_solution_name_here',
+    projectName: 'your_solution_name_here', // the name of the solution (without *.sln)
+    testProjectName: 'MsmService.Tests', // the name of the test project (without *.csproj)
 
     // These variables shouldn't be changed, but sometimes it might be necessary
     srcPath: './',
@@ -68,7 +69,7 @@ module.exports = function(grunt) {
 
     mstest: {
       debug: {
-        src: ['<%= srcPath %>/**/bin/Debug/*.dll', '<%= srcPath %>/**/bin/Debug/*.exe'] // Points to test dll
+        src: ['<%= srcPath %>/<%= testProjectName %>/bin/Debug/<%= testProjectName %>.dll'] // Points to test dll
       }
     },
 
