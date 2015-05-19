@@ -75,8 +75,8 @@ module.exports = function(grunt) {
 
     nugetrestore: {
       restore: {
-        src: '<%= srcPath %><%= solutionName %>',
-        dest: 'packages/'
+        src: '<%= srcPath %>/<%= solutionName %>',
+        dest: '<%= srcPath %>/packages/'
       }
     }
 
