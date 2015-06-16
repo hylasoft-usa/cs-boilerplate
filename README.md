@@ -57,6 +57,8 @@ This task builds the solution in debug mode, runs the Code Analysis, runs the St
 This tasks updates your AssemblyInfo files with the version number specified in the `package.json`, and then runs `grunt test`. This task must be ran before committing a new release. After that, you can create a new tag with the release version name and push the tag on github:
 
     $ git tag v[VERSION_NUMBER] && git push --tags
+    
+Where `[VERSION_NUMBER]` is the number in the `package.json`
 
 ## Pimp your VS
 
