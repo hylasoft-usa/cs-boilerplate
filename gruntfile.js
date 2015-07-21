@@ -23,12 +23,13 @@ module.exports = function(grunt) {
     ruleSet: 'rules.ruleset',
 
     pkg: grunt.file.readJSON('package.json'),
+    assemblyVersion: grunt.file.readJSON('package.json').version.replace(/\-[a-z]+/g,""), //version to remove the 'alpha'-like tags from the semver version
 
     assemblyinfo: {
       options: {
         files: ['<%= srcPath %><%= solutionName %>'],
         info: {
-          version: '<%= pkg.version %>',
+          version: '<%= assemblyVersion %>',
           fileVersion: '<%= pkg.version %>',
           company: 'hylasoft',
           copyright: ' ',
