@@ -17,7 +17,6 @@ module.exports = function(grunt) {
     // These variables shouldn't be changed, but sometimes it might be necessary
     srcPath: './',
     solutionName: '<%= projectName %>.sln',
-    dotNetVersion: '4.5.0',
     platform: 'Any CPU',
     styleCopRules: 'Settings.StyleCop',
     ruleSet: 'rules.ruleset',
