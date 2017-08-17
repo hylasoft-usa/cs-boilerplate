@@ -9,15 +9,16 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-
     // Set this variables for different projects
     projectName: 'your_solution_name_here', // the name of the solution (without *.sln)
-    testProjectName: 'TestProject', // the name of the test project (without *.csproj)
+    testProjectPath: 'tests/', // the path to the test project (without *.csproj)
+    nuspecFile: 'package.nuspec',
 
     // These variables shouldn't be changed, but sometimes it might be necessary
     srcPath: './',
     solutionName: '<%= projectName %>.sln',
     platform: 'Any CPU',
+    dotNetVersion: '4.5.0',
     styleCopRules: 'Settings.StyleCop',
     ruleSet: 'rules.ruleset',
 
@@ -44,6 +45,7 @@ module.exports = function(grunt) {
           projectConfiguration: 'Release',
           platform: '<%= platform %>',
           targets: ['Clean', 'Rebuild'],
+          version: 4.0,
           buildParameters: {
             StyleCopEnabled: false
           }
@@ -55,6 +57,7 @@ module.exports = function(grunt) {
           projectConfiguration: 'Debug',
           platform: '<%= platform %>',
           targets: ['Clean', 'Rebuild'],
+          version: 4.0,
           buildParameters: {
             StyleCopEnabled: true,
             StyleCopTreatErrorsAsWarnings: false,
@@ -69,14 +72,31 @@ module.exports = function(grunt) {
 
     mstest: {
       debug: {
-        src: ['<%= srcPath %>/<%= testProjectName %>/bin/Debug/<%= testProjectName %>.dll'] // Points to test dll
+        src: ['<%= srcPath %>/<%= testProjectPath %>/bin/Debug/*.dll'] // Points to test dll
       }
     },
 
     nugetrestore: {
       restore: {
         src: '<%= srcPath %>/<%= solutionName %>',
-        dest: '<%= srcPath %>/packages/'
+        dest: '<%= srcPath %>/packages/',
+        options: {
+          msbuildversion: 4
+        }
+      }
+    },
+
+    nugetpack: {
+      dist: {
+        src: '<%= nuspecFile %>',
+        dest: '.',
+
+        options: {
+          version: '<%= pkg.version %>',
+          basePath: '<%= projectName %>/bin/Release',
+          includeReferencedProjects: true,
+          excludeEmptyDirectories: true
+        }
       }
     }
 
